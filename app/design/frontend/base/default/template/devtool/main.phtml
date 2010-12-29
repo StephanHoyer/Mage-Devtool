@@ -1,0 +1,20 @@
+<div id="devtools-main">
+    <div id="tabs">
+        <ul>
+            <?php foreach ($this->getSortedChildBlocks() as $key => $child): ?>
+                <li><a href="#tabs-<?php echo $key?>"><?php echo $child->getBlockAlias() ?></a></li>
+            <?php endforeach; ?>
+        </ul>
+        <?php foreach ($this->getSortedChildBlocks() as $key => $child): ?>
+            <div id="tabs-<?php echo $key?>">
+                <?php echo $child->toHtml() ?>
+            </div>
+        <?php endforeach; ?>
+    </div>
+</div>
+<script type="text/javascript">
+<!--
+    // Tabs
+    jQuery('#tabs').tabs();
+//-->
+</script>
