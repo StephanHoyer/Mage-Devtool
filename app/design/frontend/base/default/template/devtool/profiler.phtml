@@ -1,0 +1,26 @@
+<table id="profiler-table">
+    <thead>
+        <tr>
+            <th><?php echo $this->__('Name') ?></th>
+            <th><?php echo $this->__('Time') ?></th>
+            <th><?php echo $this->__('Count') ?></th>
+            <th><?php echo $this->__('Emalloc') ?></th>
+            <th><?php echo $this->__('RealMem') ?></th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach ($this->getTimers() as $name=>$timer): ?>
+            <tr>
+                <td><?php echo $name ?></td>
+                <td><?php echo number_format($timer['sum'],4)?></td>
+                <td><?php echo $timer['count']?></td>
+                <td><?php echo $timer['emalloc']?></td>
+                <td><?php echo $timer['realmem']?></td>
+            </tr>
+        <?php endforeach;?>
+    </tbody>
+</table>
+<script>
+jQuery("#profiler-table").dataTable();
+
+</script>
