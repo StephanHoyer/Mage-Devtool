@@ -64,6 +64,17 @@
                 <class>Mage_Devtool_Block</class>
             </devtool>
         </blocks>
+        <events>
+            <controller_front_init_routers>
+                <observers>
+                    <first_event_observer>
+                        <type>singleton</type>
+                        <class>devtool/observer</class>
+                        <method>attachToAllEvents</method>
+                    </first_event_observer>
+                </observers>
+            </controller_front_init_routers>
+        </events>
     </global>
     <default>
     </default>

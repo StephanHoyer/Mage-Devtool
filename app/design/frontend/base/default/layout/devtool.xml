@@ -14,6 +14,7 @@
             <block type="devtool/main" name="devtool-main" template="devtool/main.phtml">
                 <block type="devtool/request" name="devtool-request" template="devtool/request.phtml" as="Request" />
                 <block type="devtool/profiler" name="devtool-profiler" template="devtool/profiler.phtml" as="Profiler"/>
+                <block type="devtool/events" name="devtool-events" template="devtool/events.phtml" as="Events"/>
 
             </block>
         </reference>
