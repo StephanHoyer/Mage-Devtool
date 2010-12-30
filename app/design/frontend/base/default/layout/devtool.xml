@@ -7,6 +7,8 @@
             <action method="addItem"><type>js</type><name>../lib/DataTables-1.7.5/media/js/jquery.dataTables.js</name><params/></action>
             <action method="addItem"><type>js_css</type><name>../lib/DataTables-1.7.5/media/css/demo_page.css</name><params/></action>
             <action method="addItem"><type>js_css</type><name>../lib/DataTables-1.7.5/media/css/demo_table_jui.css</name><params/></action>
+            <action method="addCss"><stylesheet>css/devtool.css</stylesheet><params /></action>
+            
         </reference>
         <reference name="before_body_end">
             <block type="devtool/main" name="devtool-main" template="devtool/main.phtml">

@@ -1,0 +1,12 @@
+#devtool-main {
+    width: 100%;
+    position: fixed;
+    bottom:0px;
+    left:0px;
+    right:0px;
+    background-color: black;
+}
+
+#devtool-caption {
+    padding:8px;
+}
