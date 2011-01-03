@@ -74,6 +74,15 @@
                     </first_event_observer>
                 </observers>
             </controller_front_init_routers>
+            <http_response_send_before>
+                <observers>
+                    <last_event_observer>
+                        <type>singleton</type>
+                        <class>devtool/observer</class>
+                        <method>attachEventHtml</method>
+                    </last_event_observer>
+                </observers>
+            </http_response_send_before>
         </events>
     </global>
     <default>
