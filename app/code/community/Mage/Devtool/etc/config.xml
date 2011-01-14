@@ -65,6 +65,15 @@
             </devtool>
         </blocks>
         <events>
+            <controller_action_predispatch>
+                <observers>
+                    <check_params_observer>
+                        <type>singleton</type>
+                        <class>devtool/observer</class>
+                        <method>checkParams</method>
+                    </check_params_observer>
+                </observers>
+            </controller_action_predispatch>
             <controller_front_init_routers>
                 <observers>
                     <first_event_observer>

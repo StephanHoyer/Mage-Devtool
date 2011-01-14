@@ -1,5 +1,5 @@
 <ul>
-    <?php foreach (Mage::getSingleton('devtool/event_collection') as $event): ?>
+    <?php foreach ($this->getEvents() as $event): ?>
         <li><?php echo $event->getName() ?></li>
     <?php endforeach; ?>
 </ul>
