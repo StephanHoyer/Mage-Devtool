@@ -3,21 +3,44 @@
         <h3><a href="#"><?php echo $event->getName() ?></a></h3>
         <div class="devtool-event">
             <ul>
-                <li><a href="#tabs-<?php echo $event->getName() ?>params">Params</a></li>
+                <li><a href="#tabs-<?php echo $event->getName() ?>-params">Params</a></li>
+                <li><a href="#tabs-<?php echo $event->getName() ?>-attach-xml">Attach XML</a></li>
             </ul>
-            <div id="tabs-<?php echo $event->getName() ?>params">
+            <div id="tabs-<?php echo $event->getName() ?>-params">
                 <ul>
                     <?php foreach ($event->getParams() as $name => $param): ?>
-                        <li><?php echo $name ?> (<?php echo get_class($param) ?>)</li>
+                        <li>
+                            <?php echo $name ?>
+                            <?php if (is_object($param)): ?>
+                                (<?php echo get_class($param) ?>)
+                            <?php endif; ?>
+                        </li>
                     <?php endforeach; ?>
                 </ul>
             </div>
+            <div id="tabs-<?php echo $event->getName() ?>-attach-xml">
+                <pre>
+&lt;global&gt;
+    &lt;events&gt;
+        &lt;<?php echo $event->getName() ?>&gt;
+            &lt;observers&gt;
+                &lt;my_observer&gt;
+                    &lt;type&gt;singleton&lt;/type&gt;
+                    &lt;class&gt;{{MODULE_NAME}}/{{MODEL_NAME}}&lt;/class&gt;
+                    &lt;method&gt;{{METHOD_NAME}}&lt;/method&gt;
+                &lt;/my_observer&gt;
+            &lt;/observers&gt;
+        &lt;/<?php echo $event->getName() ?>&gt;
+    &lt;/events&gt;
+&lt;/global&gt;
+                </pre>
+            </div>
             <script type="text/javascript">
-            <!--
-            jQuery(document).ready(function(){
-                jQuery('.devtool-event').tabs()
-            });
-            //-->
+                <!--
+                jQuery(document).ready(function(){
+                    jQuery('.devtool-event').tabs()
+                });
+                //-->
             </script>
         </div>
     <?php endforeach; ?>
