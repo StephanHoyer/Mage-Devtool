@@ -1,5 +1,34 @@
-<ul>
+<div id="devtool-events">
     <?php foreach ($this->getEvents() as $event): ?>
-        <li><?php echo $event->getName() ?></li>
+        <h3><a href="#"><?php echo $event->getName() ?></a></h3>
+        <div class="devtool-event">
+            <ul>
+                <li><a href="#tabs-<?php echo $event->getName() ?>params">Params</a></li>
+            </ul>
+            <div id="tabs-<?php echo $event->getName() ?>params">
+                <ul>
+                    <?php foreach ($event->getParams() as $name => $param): ?>
+                        <li><?php echo $name ?> (<?php echo get_class($param) ?>)</li>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
+            <script type="text/javascript">
+            <!--
+            jQuery(document).ready(function(){
+                jQuery('.devtool-event').tabs()
+            });
+            //-->
+            </script>
+        </div>
     <?php endforeach; ?>
-</ul>
+</div>
+<script type="text/javascript">
+<!--
+jQuery(document).ready(function(){
+    jQuery('#devtool-events').accordion({
+        collapsible: true,
+        active: false
+    })
+});
+//-->
+</script>

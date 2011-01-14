@@ -5,6 +5,7 @@
     left:0px;
     right:0px;
     background-color: black;
+    text-align: left;
 }
 .ui-tabs-panel {
     height:300px;
