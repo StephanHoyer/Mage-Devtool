@@ -1,0 +1,16 @@
+    <?php foreach ($this->getSession()->getData() as $key => $value): ?>
+       <div>
+           <span class='devtool-session-data-key'><?php echo $key ?>: </span>
+           <span class='devtool-session-data-value'>
+               <?php if (is_object($value)): ?>
+                    <?php if ($value instanceof Varien_Object): ?>
+                    
+                    <?php else: ?>
+                        <?php echo get_class($value); ?>
+                    <?php endif; ?>
+                <?php else: ?>
+                    <?php echo $value; ?>
+                <?php endif; ?>
+            </span>
+       </div>
+    <?php endforeach; ?>

@@ -1,0 +1,12 @@
+<div id="devtool-sessions" class='devtool-tab-view'>
+    <ul>
+    <?php foreach ($this->getSortedChildBlocks() as $key => $child): ?>
+        <li><a href="#tabs-session-<?php echo $key?>"><?php echo $child->getBlockAlias() ?></a></li>
+    <?php endforeach; ?>
+    </ul>
+    <?php foreach ($this->getSortedChildBlocks() as $key => $child): ?>
+        <div id="tabs-session-<?php echo $key?>">
+            <?php echo $child->toHtml() ?>
+        </div>
+    <?php endforeach; ?>
+</div>

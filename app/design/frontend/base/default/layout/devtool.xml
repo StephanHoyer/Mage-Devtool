@@ -14,6 +14,11 @@
             <block type="devtool/main" name="devtool-main" template="devtool/main.phtml">
                 <block type="devtool/request" name="devtool-request" template="devtool/request.phtml" as="Request" />
                 <block type="devtool/profiler" name="devtool-profiler" template="devtool/profiler.phtml" as="Profiler"/>
+                <block type="devtool/session" name="devtool-session" template="devtool/session.phtml" as="Session">
+                    <block type="devtool/session_core" name="devtool-session-core" template="devtool/session/abstract.phtml" as="Core"/>
+                    <block type="devtool/session_customer" name="devtool-session-customer" template="devtool/session/abstract.phtml" as="Customer"/>
+                    <block type="devtool/session_checkout" name="devtool-session-checkout" template="devtool/session/abstract.phtml" as="Checkout"/>
+                </block>
                 <block type="devtool/events_placeholder" name="devtool-events-placeholder" as="Events"/>
             </block>
         </reference>
