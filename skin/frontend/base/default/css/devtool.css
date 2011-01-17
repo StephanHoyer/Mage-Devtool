@@ -14,3 +14,7 @@
 #devtool-caption {
     padding:8px;
 }
+
+#tabs-devtool-layout ul {
+    margin-left:20px;
+}
