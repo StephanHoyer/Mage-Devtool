@@ -6,6 +6,7 @@
             <action method="addItem"><type>js_css</type><name>../lib/jquery-ui/css/smoothness/jquery-ui-1.8.7.custom.css</name><params/></action>
             <action method="addItem"><type>js</type><name>../lib/DataTables-1.7.5/media/js/jquery.dataTables.js</name><params/></action>
             <action method="addItem"><type>js</type><name>../lib/jsTree/jquery.jstree.js</name><params/></action>
+            <action method="addItem"><type>js</type><name>../lib/jsTree/_lib/jquery.cookie.js</name><params/></action>
             <action method="addItem"><type>js_css</type><name>../lib/DataTables-1.7.5/media/css/demo_page.css</name><params/></action>
             <action method="addItem"><type>js_css</type><name>../lib/DataTables-1.7.5/media/css/demo_table_jui.css</name><params/></action>
             <action method="addCss"><stylesheet>css/devtool.css</stylesheet><params /></action>

@@ -1,12 +1,20 @@
-<div id="registry-tree">
-    <?php echo Mage::helper('devtool')->printr($this->getRegistry(), true) ?>
+<div id="devtool-registry" class='devtool-tab-view'>
+    <ul>
+        <li><a href="#tabs-registry-others"><?php echo $this->__('Others')?></a></li>
+        <li><a href="#tabs-registry-singletons"><?php echo $this->__('Singletons')?></a></li>
+        <li><a href="#tabs-registry-helper"><?php echo $this->__('Helper')?></a></li>
+        <li><a href="#tabs-registry-all"><?php echo $this->__('All')?></a></li>
+    </ul>
+    <div id="tabs-registry-others" class="devtool-tree-view">
+        <?php echo Mage::helper('devtool')->printr($this->getOthers(), true)?>
+    </div>
+    <div id="tabs-registry-singletons" class="devtool-tree-view">
+        <?php echo Mage::helper('devtool')->printr($this->getSingletons(), true)?>
+    </div>
+    <div id="tabs-registry-helper" class="devtool-tree-view">
+        <?php echo Mage::helper('devtool')->printr($this->getHelpers(), true)?>
+    </div>
+    <div id="tabs-registry-all" class="devtool-tree-view">
+        <?php echo Mage::helper('devtool')->printr($this->getRegistry(), true)?>
+    </div>
 </div>
-<script type="text/javascript">
-<!--
-jQuery(document).ready(function(){
-    jQuery("#registry-tree").jstree({ 
-        "plugins" : [ "themes", "html_data" ]
-    });
-});
-//-->
-</script>

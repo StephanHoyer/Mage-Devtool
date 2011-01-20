@@ -21,11 +21,13 @@ jQuery(document).ready(function(){
     jQuery('#devtool-tabs')
         .tabs({
             collapsible: true,
-            selected: -1
+            selected: -1,
+            cookie: true
         })
         .find(".ui-tabs-nav" ).sortable({ axis: "x" });
-        jQuery('.devtool-tab-view').tabs();
+        jQuery('.devtool-tab-view').tabs({cookie:true});
         jQuery('.devtool-arrcordion-view').accordion();
+        jQuery(".devtool-tree-view").jstree({"plugins" : [ "themes", "html_data", "cookies" ]});
 });
 
 
