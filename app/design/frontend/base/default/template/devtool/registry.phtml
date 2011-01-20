@@ -1,0 +1,12 @@
+<div id="registry-tree">
+    <?php echo Mage::helper('devtool')->printr($this->getRegistry(), true) ?>
+</div>
+<script type="text/javascript">
+<!--
+jQuery(document).ready(function(){
+    jQuery("#registry-tree").jstree({ 
+        "plugins" : [ "themes", "html_data" ]
+    });
+});
+//-->
+</script>
