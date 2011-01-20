@@ -39,9 +39,9 @@ class Mage_Devtool_Helper_Data extends Mage_Core_Helper_Abstract
         $returnHtml = '<ul>';
         foreach ($array as $key => $value) {
             if (is_array($value)) {
-                $returnHtml .= '<li><span id="' . $key . '">' . $key . '</span>' . $this->arrayToHtml($value) . '</li>';
+                $returnHtml .= '<li id="' . $key . '"><a href="#">' . $key . '</a>' . $this->arrayToHtml($value) . '</li>';
             } else {
-                $returnHtml .= '<li><span id="' . $key . '">' . $key . '&nbsp;&rarr;&nbsp' . $value . '</span></li>';
+                $returnHtml .= '<li id="' . $key . '"><a href="#">' . $key . '&nbsp;&rarr;&nbsp' . $value . '</a></li>';
             }
         }
         return $returnHtml . '</ul>';
