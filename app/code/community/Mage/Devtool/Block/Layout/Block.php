@@ -14,7 +14,7 @@ class Mage_Devtool_Block_Layout_Block extends Mage_Core_Block_Template
         foreach ($this->_block->getSortedChildren() as $child) {
             $block = new Mage_Devtool_Block_Layout_Block();
             if($this->getLayout()) {
-                $output .= '<li>'.$block->init($this->getLayout(), $child)->toHtml().'</li>';
+                $output .= '<li id="'.$child.'">'.$block->init($this->getLayout(), $child)->toHtml().'</li>';
             }
         }
         return $output.'</ul>';
