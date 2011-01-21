@@ -31,7 +31,7 @@ class Mage_Devtool_Helper_Data extends Mage_Core_Helper_Abstract
             }
             return $asHtml ? $this->arrayToHtml($return) : $return;
         }
-        return $asHtml ? $this->arrayToHtml($variable) : $variable;
+        return $variable;
     }
     
     public function arrayToHtml(array $array)

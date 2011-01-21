@@ -7,16 +7,7 @@
                 <li><a href="#tabs-<?php echo $event->getName() ?>-attach-xml">Attach XML</a></li>
             </ul>
             <div id="tabs-<?php echo $event->getName() ?>-params">
-                <ul>
-                    <?php foreach ($event->getParams() as $name => $param): ?>
-                        <li>
-                            <?php echo $name ?>
-                            <?php if (is_object($param)): ?>
-                                (<?php echo get_class($param) ?>)
-                            <?php endif; ?>
-                        </li>
-                    <?php endforeach; ?>
-                </ul>
+                <?php echo Mage::helper('devtool')->printr($event->getParams(), true) ?>
             </div>
             <div id="tabs-<?php echo $event->getName() ?>-attach-xml">
                 <pre>
