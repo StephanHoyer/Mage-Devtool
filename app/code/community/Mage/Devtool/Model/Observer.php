@@ -7,7 +7,7 @@ class Mage_Devtool_Model_Observer
     
     public function attachToAllEvents($observer)
     {
-        if (false == Mage::helper('devtool')->showDevtool()) {
+        if (false == Mage::helper('devtool')->isDevtoolVisible()) {
             return;
         }
         $this->attachToEvents('global');
@@ -32,7 +32,7 @@ class Mage_Devtool_Model_Observer
 
     public function logEvent(Varien_Event_Observer $observer)
     {
-        if (false == Mage::helper('devtool')->showDevtool()) {
+        if (false == Mage::helper('devtool')->isDevtoolVisible()) {
             return;
         }
         $event = Mage::getModel('devtool/event')->init($observer);
@@ -41,7 +41,7 @@ class Mage_Devtool_Model_Observer
     
     public function attachEventHtml($observer)
     {
-        if (false == Mage::helper('devtool')->showDevtool()) {
+        if (false == Mage::helper('devtool')->isDevtoolVisible()) {
             return;
         }
         $response = Mage::app()->getResponse();
