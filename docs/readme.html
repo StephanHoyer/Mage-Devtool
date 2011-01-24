@@ -1,0 +1,454 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.7: http://docutils.sourceforge.net/" />
+<title>Magento Devtool</title>
+<style type="text/css">
+
+/*
+:Author: David Goodger (goodger@python.org)
+:Id: $Id: html4css1.css 6253 2010-03-02 00:24:53Z milde $
+:Copyright: This stylesheet has been placed in the public domain.
+
+Default cascading style sheet for the HTML output of Docutils.
+
+See http://docutils.sf.net/docs/howto/html-stylesheets.html for how to
+customize this style sheet.
+*/
+
+/* used to remove borders from tables and images */
+.borderless, table.borderless td, table.borderless th {
+  border: 0 }
+
+table.borderless td, table.borderless th {
+  /* Override padding for "table.docutils td" with "! important".
+     The right padding separates the table cells. */
+  padding: 0 0.5em 0 0 ! important }
+
+.first {
+  /* Override more specific margin styles with "! important". */
+  margin-top: 0 ! important }
+
+.last, .with-subtitle {
+  margin-bottom: 0 ! important }
+
+.hidden {
+  display: none }
+
+a.toc-backref {
+  text-decoration: none ;
+  color: black }
+
+blockquote.epigraph {
+  margin: 2em 5em ; }
+
+dl.docutils dd {
+  margin-bottom: 0.5em }
+
+/* Uncomment (and remove this text!) to get bold-faced definition list terms
+dl.docutils dt {
+  font-weight: bold }
+*/
+
+div.abstract {
+  margin: 2em 5em }
+
+div.abstract p.topic-title {
+  font-weight: bold ;
+  text-align: center }
+
+div.admonition, div.attention, div.caution, div.danger, div.error,
+div.hint, div.important, div.note, div.tip, div.warning {
+  margin: 2em ;
+  border: medium outset ;
+  padding: 1em }
+
+div.admonition p.admonition-title, div.hint p.admonition-title,
+div.important p.admonition-title, div.note p.admonition-title,
+div.tip p.admonition-title {
+  font-weight: bold ;
+  font-family: sans-serif }
+
+div.attention p.admonition-title, div.caution p.admonition-title,
+div.danger p.admonition-title, div.error p.admonition-title,
+div.warning p.admonition-title {
+  color: red ;
+  font-weight: bold ;
+  font-family: sans-serif }
+
+/* Uncomment (and remove this text!) to get reduced vertical space in
+   compound paragraphs.
+div.compound .compound-first, div.compound .compound-middle {
+  margin-bottom: 0.5em }
+
+div.compound .compound-last, div.compound .compound-middle {
+  margin-top: 0.5em }
+*/
+
+div.dedication {
+  margin: 2em 5em ;
+  text-align: center ;
+  font-style: italic }
+
+div.dedication p.topic-title {
+  font-weight: bold ;
+  font-style: normal }
+
+div.figure {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+div.footer, div.header {
+  clear: both;
+  font-size: smaller }
+
+div.line-block {
+  display: block ;
+  margin-top: 1em ;
+  margin-bottom: 1em }
+
+div.line-block div.line-block {
+  margin-top: 0 ;
+  margin-bottom: 0 ;
+  margin-left: 1.5em }
+
+div.sidebar {
+  margin: 0 0 0.5em 1em ;
+  border: medium outset ;
+  padding: 1em ;
+  background-color: #ffffee ;
+  width: 40% ;
+  float: right ;
+  clear: right }
+
+div.sidebar p.rubric {
+  font-family: sans-serif ;
+  font-size: medium }
+
+div.system-messages {
+  margin: 5em }
+
+div.system-messages h1 {
+  color: red }
+
+div.system-message {
+  border: medium outset ;
+  padding: 1em }
+
+div.system-message p.system-message-title {
+  color: red ;
+  font-weight: bold }
+
+div.topic {
+  margin: 2em }
+
+h1.section-subtitle, h2.section-subtitle, h3.section-subtitle,
+h4.section-subtitle, h5.section-subtitle, h6.section-subtitle {
+  margin-top: 0.4em }
+
+h1.title {
+  text-align: center }
+
+h2.subtitle {
+  text-align: center }
+
+hr.docutils {
+  width: 75% }
+
+img.align-left, .figure.align-left, object.align-left {
+  clear: left ;
+  float: left ;
+  margin-right: 1em }
+
+img.align-right, .figure.align-right, object.align-right {
+  clear: right ;
+  float: right ;
+  margin-left: 1em }
+
+img.align-center, .figure.align-center, object.align-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.align-left {
+  text-align: left }
+
+.align-center {
+  clear: both ;
+  text-align: center }
+
+.align-right {
+  text-align: right }
+
+/* reset inner alignment in figures */
+div.align-right {
+  text-align: left }
+
+/* div.align-center * { */
+/*   text-align: left } */
+
+ol.simple, ul.simple {
+  margin-bottom: 1em }
+
+ol.arabic {
+  list-style: decimal }
+
+ol.loweralpha {
+  list-style: lower-alpha }
+
+ol.upperalpha {
+  list-style: upper-alpha }
+
+ol.lowerroman {
+  list-style: lower-roman }
+
+ol.upperroman {
+  list-style: upper-roman }
+
+p.attribution {
+  text-align: right ;
+  margin-left: 50% }
+
+p.caption {
+  font-style: italic }
+
+p.credits {
+  font-style: italic ;
+  font-size: smaller }
+
+p.label {
+  white-space: nowrap }
+
+p.rubric {
+  font-weight: bold ;
+  font-size: larger ;
+  color: maroon ;
+  text-align: center }
+
+p.sidebar-title {
+  font-family: sans-serif ;
+  font-weight: bold ;
+  font-size: larger }
+
+p.sidebar-subtitle {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+p.topic-title {
+  font-weight: bold }
+
+pre.address {
+  margin-bottom: 0 ;
+  margin-top: 0 ;
+  font: inherit }
+
+pre.literal-block, pre.doctest-block {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+span.classifier {
+  font-family: sans-serif ;
+  font-style: oblique }
+
+span.classifier-delimiter {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+span.interpreted {
+  font-family: sans-serif }
+
+span.option {
+  white-space: nowrap }
+
+span.pre {
+  white-space: pre }
+
+span.problematic {
+  color: red }
+
+span.section-subtitle {
+  /* font-size relative to parent (h1..h6 element) */
+  font-size: 80% }
+
+table.citation {
+  border-left: solid 1px gray;
+  margin-left: 1px }
+
+table.docinfo {
+  margin: 2em 4em }
+
+table.docutils {
+  margin-top: 0.5em ;
+  margin-bottom: 0.5em }
+
+table.footnote {
+  border-left: solid 1px black;
+  margin-left: 1px }
+
+table.docutils td, table.docutils th,
+table.docinfo td, table.docinfo th {
+  padding-left: 0.5em ;
+  padding-right: 0.5em ;
+  vertical-align: top }
+
+table.docutils th.field-name, table.docinfo th.docinfo-name {
+  font-weight: bold ;
+  text-align: left ;
+  white-space: nowrap ;
+  padding-left: 0 }
+
+h1 tt.docutils, h2 tt.docutils, h3 tt.docutils,
+h4 tt.docutils, h5 tt.docutils, h6 tt.docutils {
+  font-size: 100% }
+
+ul.auto-toc {
+  list-style-type: none }
+
+</style>
+</head>
+<body>
+<div class="document" id="magento-devtool">
+<h1 class="title">Magento Devtool</h1>
+
+<p>This Module adds a toolbar to your Magento frontend based on jQuery UI. It currently includes the following features:</p>
+<ul class="simple">
+<li>Request information</li>
+<li>Extended Profiler (with sorting and filtering)</li>
+<li>Registry (Separated by session, helper and other data)</li>
+<li>Layout (Tree structure of the Layout)</li>
+<li>Session-Information</li>
+<li>Events fired of the current request</li>
+</ul>
+<table border="1" class="docutils">
+<colgroup>
+<col width="11%" />
+<col width="89%" />
+</colgroup>
+<tbody valign="top">
+<tr><td>Author</td>
+<td>Stephan Hoyer &lt;<a class="reference external" href="mailto:stephan.hoyer&#64;netresearch.de">stephan.hoyer&#64;netresearch.de</a>&gt;</td>
+</tr>
+<tr><td>Copyright</td>
+<td>2011 Netresearch GmbH &amp; Co.KG &lt;<a class="reference external" href="http://www.netresearch.de/">http://www.netresearch.de/</a>&gt;</td>
+</tr>
+<tr><td>License</td>
+<td><a class="reference external" href="http://opensource.org/licenses/osl-3.0.php">http://opensource.org/licenses/osl-3.0.php</a>  Open Software License (OSL 3.0)</td>
+</tr>
+<tr><td>Link</td>
+<td><a class="reference external" href="http://www.netresearch.de/leistungen/magento-ecommerce.html">http://www.netresearch.de/leistungen/magento-ecommerce.html</a></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="requirements">
+<h1>Requirements</h1>
+<p>The Devtool is tested on Magento 1.4.2.0 but may work on other versions of Magento. It is required to install the <a class="reference external" href="http://www.magentocommerce.com/magento-connect/mxperts/extension/1619/mxperts--jquery-base">Jquery-Module</a> from Mxperts</p>
+</div>
+<div class="section" id="how-to-enable">
+<h1>How to enable</h1>
+<p>After copying all files to your Magento installation, the described informations are easy accessible with a JS-UI. You can start the Devtool by attaching the GET-Parameter</p>
+<pre class="literal-block">
+show-devtool=1
+</pre>
+<p>to any request. This setting is stored in your session. You can disable it by attaching the GET-Parameter</p>
+<pre class="literal-block">
+show-devtool=0
+</pre>
+</div>
+<div class="section" id="features-in-detail">
+<h1>Features in Detail</h1>
+<div class="section" id="request">
+<h2>Request</h2>
+<p>This Tab shows basic information of the request. It is only a first skeleton. More data should be added here soon.</p>
+</div>
+<div class="section" id="profiler">
+<h2>Profiler</h2>
+<p>The profiler tab contains the normal Magento profiling information but within a JS-featured filter and order functionality.</p>
+</div>
+<div class="section" id="registry">
+<h2>Registry</h2>
+<p>The registry tab does not contain any information if you do not add a additional function to your Mage class at Mage.php. That means modifiying the core. So be sure you know what you do.</p>
+<pre class="literal-block">
+/**
+ * Returns current registry array
+ *
+ * &#64;return array
+ */
+public static function getRegistry()
+{
+    return self::$_registry;
+}
+</pre>
+<p>After adding this function, the tab contains all variables registered during this request. The registrations are seperated by Singletons, Helpers and others.</p>
+</div>
+<div class="section" id="layout">
+<h2>Layout</h2>
+<p>The Layout tab contains the complete layout tree of the current visible page. The idea here is to extend this tab to see additional information for all the blocks that are rendered including the ones you can't see in the html output.</p>
+</div>
+<div class="section" id="session">
+<h2>Session</h2>
+<p>This Tab contains subtabs, each for every session. Here you can find all session data. Adding new tabs for your own session is easy: you simply add a new subblock to the block called <cite>devtool-session</cite> like so:</p>
+<pre class="literal-block">
+&lt;reference name=&quot;devtool-session&quot;&gt;
+    &lt;block type=&quot;{YOUR_MODULE}/{YOUR_BLOCK}&quot; name=&quot;devtool-session-{NAME}&quot; template=&quot;devtool/session/abstract.phtml&quot; as=&quot;{NAME}&quot;/&gt;
+&lt;/reference&gt;
+</pre>
+<p>where {YOUR_BLOCK} has to extend <cite>Mage_Devtool_Block_Session_Abstract</cite></p>
+</div>
+<div class="section" id="events">
+<h2>Events</h2>
+<p>The events tab contains most of the events which where dispatched during the last request. You can click on each of them to get detailed information about which data the event comes with. You can also find the config xml-code you have to include in your config.xml to attach to this event.</p>
+</div>
+</div>
+<div class="section" id="features-and-improvements-to-come">
+<h1>Features and improvements to come</h1>
+<div class="section" id="id1">
+<h2>Request</h2>
+<p>Detailed information about the request and the responst incl. headers, GET and POST parameters and much more.</p>
+</div>
+<div class="section" id="id2">
+<h2>Profiler</h2>
+<p>The layout and CSS of profiler table has to be improved to fit into the rest of the UI.</p>
+</div>
+<div class="section" id="id3">
+<h2>Layout</h2>
+<p>There are a lot of ideas for extensions of the layout tab
+* Detailed information on each block (Alias, template, class, cache status)
+* XML to rewrite the block
+* XML to attach the block as children of another
+* Buttons to clear the blocks cache</p>
+</div>
+<div class="section" id="id4">
+<h2>Session</h2>
+<p>The Session tab should also give the possibility to manipulate (edit/delete) the session information. Therefore we have to improve the security of the module. It must not be possible to take other ones identity by manipulation of the session data. The toolbar itself should be availible only for granted people (e.g. depending on an admin session incl. ACL)</p>
+</div>
+<div class="section" id="id5">
+<h2>Events</h2>
+<p>The events tab should be extended to also show all oberserves which are attached to this event.</p>
+</div>
+<div class="section" id="new-tab-inline-log">
+<h2>NEW TAB Inline Log</h2>
+<p>One tab should contain all log entries which are logged by Mage::log during this request.</p>
+</div>
+<div class="section" id="new-tab-clear-cache">
+<h2>NEW TAB Clear Cache</h2>
+<p>It should be possible to clear any of the caches with a click on specified buttons.</p>
+</div>
+<div class="section" id="ui-improvements">
+<h2>UI-Improvements</h2>
+<ul class="simple">
+<li>Different Icons for different types of node in a tree view (Object, Array, Scalar)</li>
+<li>Search field for all trees</li>
+<li>Resizable toolbar</li>
+</ul>
+</div>
+<div class="section" id="external-devtool">
+<h2>External Devtool</h2>
+<p>It will be not always possible to show each information in the toolbar. Some require more space. The toolbar also does not work, in case there is a JavaScript error on the page. A solution for this might be a Devtool which runs on seperate browser window or tab. So the Toolbar could contain a link to open in a seperate tab which is attached to the session. There you can build a AJAX-rich UI which refreshes automaticaly if the main browser-window is refreshed.</p>
+</div>
+</div>
+</div>
+</body>
+</html>
