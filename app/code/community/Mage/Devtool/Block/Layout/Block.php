@@ -62,17 +62,17 @@ class Mage_Devtool_Block_Layout_Block extends Mage_Core_Block_Template
      */
     protected function _toHtml()
     {
-        $output = '<a href="#">'.$this->_block->getNameInLayout().'</a><ul>';
+        $output = '';
         foreach ($this->_block->getSortedChildren() as $child) {
             $block = new Mage_Devtool_Block_Layout_Block();
             if ($this->getLayout()) {
-                $output .= sprintf(
-                    '<li id="%s">%s</li>',
-                    $child,
-                    $block->init($this->getLayout(), $child)->toHtml()
-                );
+                $output .= $block->init($this->getLayout(), $child)->toHtml();
             }
         }
-        return $output.'</ul>';
+        return sprintf('<li id="%s"><a href= "#">%s</a><ul>%s</ul></li>',
+            'devtool-layout-'.$this->_block->getNameInLayout(),
+            $this->_block->getNameInLayout(),
+            $output
+        ) ;
     }
 }

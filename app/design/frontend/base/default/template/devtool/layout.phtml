@@ -1,12 +1,5 @@
-<div id="layout-tree">
-<?php echo $this->getBlockDataHtml()?>
+<div class="devtool-tree-view">
+    <ul>
+        <?php echo $this->getBlockDataHtml()?>
+    </ul>
 </div>
-<script type="text/javascript">
-<!--
-jQuery(document).ready(function(){
-    jQuery("#layout-tree").jstree({ 
-        "plugins" : ["themes", "html_data", "ui", "cookies"]
-    });
-});
-//-->
-</script>
