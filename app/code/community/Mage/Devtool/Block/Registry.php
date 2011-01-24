@@ -77,7 +77,7 @@ class Mage_Devtool_Block_Registry extends Mage_Core_Block_Template
      */
     public function getRegistry()
     {
-        if ($this->isRegistryEnabled) {
+        if ($this->isRegistryEnabled()) {
             return Mage::getRegistry();
         }
         return array();
