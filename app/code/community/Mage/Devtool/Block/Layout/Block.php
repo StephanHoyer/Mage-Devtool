@@ -70,8 +70,10 @@ class Mage_Devtool_Block_Layout_Block extends Mage_Core_Block_Template
             }
         }
         return sprintf('<li id="%s"><a href= "#">%s</a><ul>%s</ul></li>',
-            'devtool-layout-'.$this->_block->getNameInLayout(),
-            $this->_block->getNameInLayout(),
+            uniqid('devtool-'),
+            $this->_block->getNameInLayout() ? 
+                $this->_block->getNameInLayout() : 
+                Mage_Devtool_Helper_Data::NO_CAPTION_LABEL,
             $output
         ) ;
     }

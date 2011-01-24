@@ -6,15 +6,15 @@
         <li><a href="#tabs-registry-all"><?php echo $this->__('All')?></a></li>
     </ul>
     <div id="tabs-registry-others" class="devtool-tree-view">
-        <?php echo Mage::helper('devtool')->printr($this->getOthers(), true, 'devtool-registry-others-')?>
+        <?php echo Mage::helper('devtool')->printr($this->getOthers(), true)?>
     </div>
     <div id="tabs-registry-singletons" class="devtool-tree-view">
-        <?php echo Mage::helper('devtool')->printr($this->getSingletons(), true, 'devtool-registry-singletons-')?>
+        <?php echo Mage::helper('devtool')->printr($this->getSingletons(), true)?>
     </div>
     <div id="tabs-registry-helper" class="devtool-tree-view">
-        <?php echo Mage::helper('devtool')->printr($this->getHelpers(), true, 'devtool-registry-helper-')?>
+        <?php echo Mage::helper('devtool')->printr($this->getHelpers(), true)?>
     </div>
     <div id="tabs-registry-all" class="devtool-tree-view">
-        <?php echo Mage::helper('devtool')->printr($this->getRegistry(), true, 'devtool-registry-all-')?>
+        <?php echo Mage::helper('devtool')->printr($this->getRegistry(), true)?>
     </div>
 </div>

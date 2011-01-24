@@ -40,7 +40,8 @@
  */
 class Mage_Devtool_Helper_Data extends Mage_Core_Helper_Abstract
 {
-    const RECURSION_LABEL = 'Recursion';
+    const RECURSION_LABEL = 'R E C U R S I O N';
+    const NO_CAPTION_LABEL = 'N O   C A P T I O N';
     
     /**
      * if developer toolbar should be visible
@@ -60,12 +61,11 @@ class Mage_Devtool_Helper_Data extends Mage_Core_Helper_Abstract
      *
      * @param mixed   $variable       Variable to get data of
      * @param boolean $asHtml         If we want html output
-     * @param string  $idPrefix       Prefix of ids of HTML-nodes
      * @param array   $trackedObjects List of handled objects to avoid recursion
      *
      * @return array|string
      */
-    public function printr($variable, $asHtml=false, $idPrefix='', $trackedObjects=array())
+    public function printr($variable, $asHtml=false, $trackedObjects=array())
     {
         if (is_object($variable)) {
             if ($variable instanceof Varien_Object) {
@@ -74,7 +74,7 @@ class Mage_Devtool_Helper_Data extends Mage_Core_Helper_Abstract
                     $return = array(
                         get_class($variable) => $this->printr(
                             $variable->getData(),
-                            $asHtml,
+                            false,
                             $trackedObjects
                         )
                     );
@@ -89,7 +89,7 @@ class Mage_Devtool_Helper_Data extends Mage_Core_Helper_Abstract
             foreach ($variable as $key => $value) {
                 $return[$key] = $this->printr($value, false, $trackedObjects); 
             }
-            return $asHtml ? $this->arrayToHtml($return, $idPrefix) : $return;
+            return $asHtml ? $this->arrayToHtml($return) : $return;
         }
         return $variable;
     }
@@ -98,30 +98,29 @@ class Mage_Devtool_Helper_Data extends Mage_Core_Helper_Abstract
      * turn array into html
      *
      * @param array $array Array
-     * @param string  $idPrefix       Prefix of ids of HTML-nodes
      *
      * @return string
      */
-    public function arrayToHtml(array $array, $idPrefix='')
+    public function arrayToHtml(array $array)
     {
-        $returnHtml = '<ul>';
+        $returnHtml = '';
         foreach ($array as $key => $value) {
             if (is_array($value)) {
                 $returnHtml .= sprintf(
                     '<li id="%s"><a href="#">%s</a>%s</li>',
-                    $idPrefix . $key,
-                    $key,
-                    $this->arrayToHtml($value, $idPrefix)
+                    uniqid('devtool-'),
+                    $key ? $key : self::NO_CAPTION_LABEL,
+                    $this->arrayToHtml($value)
                 );
             } else {
                 $returnHtml .= sprintf(
                     '<li id="%s"><a href="#">%s</a>%s</li>',
-                    $idPrefix . $key,
-                    $key,
-                    $key . '&nbsp;&rarr;&nbsp' . $value
+                    uniqid('devtool-'),
+                    $key ? $key : self::NO_CAPTION_LABEL,
+                    '&nbsp;&rarr;&nbsp' . $value
                 );
             }
         }
-        return $returnHtml . '</ul>';
+        return '<ul>' . $returnHtml . '</ul>';
     }
 }
