@@ -22,6 +22,9 @@
                     <block type="devtool/session_core" name="devtool-session-core" template="devtool/session/abstract.phtml" as="Core"/>
                     <block type="devtool/session_customer" name="devtool-session-customer" template="devtool/session/abstract.phtml" as="Customer"/>
                     <block type="devtool/session_checkout" name="devtool-session-checkout" template="devtool/session/abstract.phtml" as="Checkout"/>
+                    <block type="devtool/session_catalog" name="devtool-session-catalog" template="devtool/session/abstract.phtml" as="Catalog"/>
+                    <block type="devtool/session_catalogsearch" name="devtool-session-catalogsearch" template="devtool/session/abstract.phtml" as="CatalogSearch"/>
+                    <block type="devtool/session_wishlist" name="devtool-session-wishlist" template="devtool/session/abstract.phtml" as="Wishlist"/>
                 </block>
                 <block type="devtool/events_placeholder" name="devtool-events-placeholder" as="Events"/>
             </block>
