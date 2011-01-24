@@ -32,7 +32,6 @@ LINKS=( \
   "app/locale/en_US/$LC_CONTRIBUTOR/$LC_MODULE.xml"
   "js/$LC_MODULE.xml"
   "js/"$LC_CONTRIBUTOR"/$LC_MODULE.xml"
-  "lib/*"
   "skin/backend/base/default/css/$LC_CONTRIBUTOR/$LC_MODULE"
   "skin/backend/base/default/css/$LC_MODULE.css"
   "skin/backend/base/default/css/$LC_MODULE"
@@ -53,17 +52,16 @@ LINKS=( \
 while [ ! -f $MAGE_DIR/index.php ]; do
   echo "please enter path to the document root of your magento shop:"
   read MAGE_DIR
-  echo "looking for index.php in $MAGE_DIR"
 done
 echo ""
 echo "creating up to ${#LINKS[@]} symbolic links in $MAGE_DIR"
 
 for LINK in "${LINKS[@]}"; do
   if [ -a "$MODULE_DIR/$LINK" ]; then
-    if [[ -f "$MAGE_DIR/$LINK" || -d "$MAGE_DIR/$LINK" ]]; then
-      echo " - skipping $LINK: file/folder already exists (no symlink)."
-    elif [ -L "$MAGE_DIR/$LINK" ]; then
+    if [ -L "$MAGE_DIR/$LINK" ]; then
       echo " - ignoring $LINK: symlink already exists."
+    elif [[ -f "$MAGE_DIR/$LINK" || -d "$MAGE_DIR/$LINK" ]]; then
+      echo " - skipping $LINK: file/folder already exists (no symlink)."
     else
       REQUIRED_PARENT_DIR=${LINK/\/$CONTRIBUTOR\/$MODULE/\/$CONTRIBUTOR/}
       REQUIRED_PARENT_DIR=`dirname $REQUIRED_PARENT_DIR`
@@ -74,8 +72,19 @@ for LINK in "${LINKS[@]}"; do
         fi
       fi
       ln -s -t $MAGE_DIR/$REQUIRED_PARENT_DIR $MODULE_DIR/$LINK
-      echo " - created symbolic link $LINK: ln -s -t $MAGE_DIR/$REQUIRED_PARENT_DIR $MODULE_DIR/$LINK"
+      echo " - created symbolic link $LINK"
     fi
   fi
 done
 
+for LINK in `ls "$MODULE_DIR/lib"`; do
+  LINK="lib/$LINK"
+  if [ -L "$MAGE_DIR/$LINK" ]; then
+    echo " - ignoring $LINK: symlink already exists."
+  elif [[ -f "$MAGE_DIR/$LINK" || -d "$MAGE_DIR/$LINK" ]]; then
+    echo " - skipping $LINK: file/folder already exists (no symlink)."
+  else
+    ln -s -t $MAGE_DIR/lib $MODULE_DIR/$LINK
+    echo " - created symbolic link $LINK"
+  fi
+done
