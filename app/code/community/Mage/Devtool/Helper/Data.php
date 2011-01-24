@@ -114,10 +114,10 @@ class Mage_Devtool_Helper_Data extends Mage_Core_Helper_Abstract
                 );
             } else {
                 $returnHtml .= sprintf(
-                    '<li id="%s"><a href="#">%s</a>%s</li>',
+                    '<li id="%s"><a href="#">%s%s</a></li>',
                     uniqid('devtool-'),
                     $key ? $key : self::NO_CAPTION_LABEL,
-                    '&nbsp;&rarr;&nbsp' . $value
+                    '&nbsp;&rarr;&nbsp;' . $value
                 );
             }
         }
