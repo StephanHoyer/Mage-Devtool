@@ -61,16 +61,26 @@ class Mage_Devtool_Block_Registry extends Mage_Core_Block_Template
     protected $others = array();
     
     /**
+     * check if getRegistry-function is available in class Mage
+     *
+     * @return bool
+     */
+    public function isRegistryEnabled()
+    {
+        return method_exists(new Mage, 'getRegistry');
+    }
+    
+    /**
      * get registry
      *
      * @return array
      */
     public function getRegistry()
     {
-        if (method_exists(new Mage, 'getRegistry')) {
+        if ($this->isRegistryEnabled) {
             return Mage::getRegistry();
         }
-        return array(''=>'no getRegistry() method found in class Mage');
+        return array();
     }
     
     /**
