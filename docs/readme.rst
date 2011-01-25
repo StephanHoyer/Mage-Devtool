@@ -140,6 +140,13 @@ UI-Improvements
 * Search field for all trees 
 * Resizable toolbar
 
+Extend printr helper function
++++++++++++++++++++++++++++++
+
+* Extend to print objects regarding the class
+* Also include no-data-array membervariables
+* Also printr objects that dont inherit from Varien Object (e.g. controllers) 
+
 External Devtool
 ++++++++++++++++
 
