@@ -5,8 +5,6 @@
             <active>true</active>
             <codePool>community</codePool>
             <depends>
-                <Mxperts_Jquery />
-                <Mxperts_JqueryAll />
             </depends>
         </Mage_Devtool>
     </modules>
