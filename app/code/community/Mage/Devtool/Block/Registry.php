@@ -64,10 +64,12 @@ class Mage_Devtool_Block_Registry extends Mage_Core_Block_Template
      * check if getRegistry-function is available in class Mage
      *
      * @return bool
+     * @deprecated Function is not required anymore due to use of reflection
      */
     public function isRegistryEnabled()
     {
-        return method_exists(new Mage, 'getRegistry');
+        return true;
+//        return method_exists(new Mage, 'getRegistry');
     }
     
     /**
@@ -77,10 +79,9 @@ class Mage_Devtool_Block_Registry extends Mage_Core_Block_Template
      */
     public function getRegistry()
     {
-        if ($this->isRegistryEnabled()) {
-            return Mage::getRegistry();
-        }
-        return array();
+        $reflection = new ReflectionClass("Mage");
+        $staticProperties = $reflection->getStaticProperties();
+        return $staticProperties['_registry'];
     }
     
     /**
