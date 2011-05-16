@@ -109,7 +109,7 @@ class Mage_Devtool_Helper_Data extends Mage_Core_Helper_Abstract
             }
             return $asHtml ? $this->arrayToHtml($return) : $return;
         }
-        return htmlentities($variable);
+        return $variable;
     }
     
     /**
@@ -145,7 +145,7 @@ class Mage_Devtool_Helper_Data extends Mage_Core_Helper_Abstract
                     uniqid('devtool-'),
                     $key ? htmlentities($key) : self::NO_CAPTION_LABEL,
                     uniqid('devtool-'),
-                    $key ? htmlentities($value) : self::NO_CAPTION_LABEL
+                    $value ? htmlentities($value) : self::NO_CAPTION_LABEL
                 );
             }
         }
