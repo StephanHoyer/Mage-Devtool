@@ -42,6 +42,7 @@ class Mage_Devtool_Helper_Data extends Mage_Core_Helper_Abstract
 {
     const RECURSION_LABEL = 'R E C U R S I O N';
     const NO_CAPTION_LABEL = 'N O   C A P T I O N';
+    const EMPTY_ARRAY_LABEL = 'E M P T Y   A R R A Y';
     
     /**
      * if developer toolbar should be visible
@@ -81,8 +82,25 @@ class Mage_Devtool_Helper_Data extends Mage_Core_Helper_Abstract
                     return $asHtml ? $this->arrayToHtml($return) : $return;
                 }
                 return self::RECURSION_LABEL;
+            } elseif($variable instanceof Varien_Data_Collection) {
+                if($variable->count() <= 0) {
+                    return self::EMPTY_ARRAY_LABEL;
+                }
+                $collection = clone $variable;
+                return $asHtml ? $this->arrayToHtml($collection->toArray()) : $collection->toArray();
+            } elseif($variable instanceof Mage_Core_Model_Message_Collection) {
+                if($variable->count() <= 0) {
+                    return $this->__("No Messages");
+                }
+                $messages = clone $variable;
+                $return = array();
+                $i = 0;
+                foreach ($messages->getItems() as $message) {
+                    $return[$this->__('Message %d',$i++)] = $message->toString();
+                }
+                return $asHtml ? $this->arrayToHtml($return) : $return;
             } else {
-                return "Object of class " . get_class($variable);
+                return $this->__("Object of class %s", get_class($variable));
             }
         } elseif (is_array($variable)) {
             $return = array();
@@ -91,7 +109,7 @@ class Mage_Devtool_Helper_Data extends Mage_Core_Helper_Abstract
             }
             return $asHtml ? $this->arrayToHtml($return) : $return;
         }
-        return $variable;
+        return htmlentities($variable);
     }
     
     /**
@@ -105,14 +123,16 @@ class Mage_Devtool_Helper_Data extends Mage_Core_Helper_Abstract
     {
         $returnHtml = '';
         foreach ($array as $key => $value) {
+            $key = trim($key);
             if (is_array($value)) {
                 $returnHtml .= sprintf(
                     '<li id="%s"><a href="#">%s</a>%s</li>',
                     uniqid('devtool-'),
-                    $key ? $key : self::NO_CAPTION_LABEL,
+                    $key ? htmlentities($key) : self::NO_CAPTION_LABEL,
                     $this->arrayToHtml($value)
                 );
             } else {
+                $value = trim($value);
                 $returnHtml .= sprintf(
                     '<li id="%s" class="open">
                         <a href="#">%s</a>
@@ -123,12 +143,21 @@ class Mage_Devtool_Helper_Data extends Mage_Core_Helper_Abstract
                         </ul>
                     </li>',
                     uniqid('devtool-'),
-                    $key ? $key : self::NO_CAPTION_LABEL,
+                    $key ? htmlentities($key) : self::NO_CAPTION_LABEL,
                     uniqid('devtool-'),
-                    $value ? htmlentities($value) : self::NO_CAPTION_LABEL
+                    $key ? htmlentities($value) : self::NO_CAPTION_LABEL
                 );
             }
         }
         return '<ul>' . $returnHtml . '</ul>';
+    }
+    
+    public function log($value)
+    {
+        Mage::getSingleton('devtool/log_collection')->add(
+            Mage::getModel('devtool/log')
+                ->setStack(debug_backtrace())
+                ->setValue($value)
+        );
     }
 }
