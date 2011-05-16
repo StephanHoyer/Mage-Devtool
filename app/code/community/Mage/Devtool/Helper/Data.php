@@ -143,12 +143,21 @@ class Mage_Devtool_Helper_Data extends Mage_Core_Helper_Abstract
                         </ul>
                     </li>',
                     uniqid('devtool-'),
-                    $key ? $key : self::NO_CAPTION_LABEL,
+                    $key ? htmlentities($key) : self::NO_CAPTION_LABEL,
                     uniqid('devtool-'),
-                    $value ? htmlentities($value) : self::NO_CAPTION_LABEL
+                    $key ? htmlentities($value) : self::NO_CAPTION_LABEL
                 );
             }
         }
         return '<ul>' . $returnHtml . '</ul>';
+    }
+    
+    public function log($value)
+    {
+        Mage::getSingleton('devtool/log_collection')->add(
+            Mage::getModel('devtool/log')
+                ->setStack(debug_backtrace())
+                ->setValue($value)
+        );
     }
 }

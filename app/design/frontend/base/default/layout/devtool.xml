@@ -20,6 +20,7 @@
                 <block type="devtool/profiler" name="devtool-profiler" template="devtool/profiler.phtml" as="Profiler"/>
                 <block type="devtool/registry" name="devtool-registry" template="devtool/registry.phtml" as="Registry"/>
                 <block type="devtool/layout" name="devtool-layout"  template="devtool/layout.phtml" as="Layout" />
+                <block type="devtool/logs" name="devtool-logs"  template="devtool/logs.phtml" as="Logs" />
                 <block type="devtool/session" name="devtool-session" template="devtool/session.phtml" as="Session">
                     <block type="devtool/session_core" name="devtool-session-core" template="devtool/session/abstract.phtml" as="Core"/>
                     <block type="devtool/session_customer" name="devtool-session-customer" template="devtool/session/abstract.phtml" as="Customer"/>
