@@ -43,6 +43,8 @@ class Mage_Devtool_Model_Observer
     const PARAM_NAME_SHOW_DEVTOOL = 'show-devtool';
     const PARAM_NAME_HIDE_DEVTOOL = 'hide-devtool';
     
+    const DISPATCH_EVENT_PREFIX = 'DISPATCH EVENT:';
+    
     /**
      * catch all thrown events
      *
@@ -70,11 +72,34 @@ class Mage_Devtool_Model_Observer
      **/ 
     protected function attachToEvents($area)
     {
-        foreach (Mage::getConfig()->getNode($area)->events->children() as $event) {
-                $event->observers->devtool->type = 'singleton';
-                $event->observers->devtool->class = 'devtool/observer';
-                $event->observers->devtool->method = 'logEvent';
+        foreach (Mage::getSingleton('devtool/session')->getEvents() as $eventName) {
+            $event = $this->createEventNode($eventName);
+            Mage::getConfig()
+                ->getNode($area)
+                ->events
+                ->appendChild($event);
         }
+    }
+    
+    /**
+     * Creates config XML object with all event observer data.
+     *
+     * @return Mage_Core_Model_Config_Element
+     **/
+    protected function createEventNode($name)
+    {
+        return new Mage_Core_Model_Config_Element(sprintf(
+            '<?xml version="1.0"?>
+            <%s>
+               <observers>
+                  <devtool>
+                     <type>singleton</type>
+                     <class>devtool/observer</class>
+                     <method>logEvent</method>
+                  </devtool>
+               </observers>
+            </%s>    
+        ', $name, $name));
     }
 
     /**
@@ -118,7 +143,19 @@ class Mage_Devtool_Model_Observer
                 $response->getBody()
             )
         );
+        $this->catchEventsFromProfiler();
     }
+    
+    public function catchEventsFromProfiler()
+    {
+        foreach (Varien_Profiler::getTimers() as $name => $timer) {
+            if(strpos($name, self::DISPATCH_EVENT_PREFIX) === 0) {
+                Mage::getSingleton('devtool/session')
+                    ->addEvent(str_replace(self::DISPATCH_EVENT_PREFIX, '', $name));
+            }
+        }
+    }
+    
     
     /**
      * Checks for devtool related get-parameteters 

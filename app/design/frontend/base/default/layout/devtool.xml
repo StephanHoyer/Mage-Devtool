@@ -28,6 +28,7 @@
                     <block type="devtool/session_catalog" name="devtool-session-catalog" template="devtool/session/abstract.phtml" as="Catalog"/>
                     <block type="devtool/session_catalogsearch" name="devtool-session-catalogsearch" template="devtool/session/abstract.phtml" as="CatalogSearch"/>
                     <block type="devtool/session_wishlist" name="devtool-session-wishlist" template="devtool/session/abstract.phtml" as="Wishlist"/>
+                    <block type="devtool/session_devtool" name="devtool-session-devtool" template="devtool/session/abstract.phtml" as="Devtool"/>
                 </block>
                 <block type="devtool/events_placeholder" name="devtool-events-placeholder" as="Events"/>
             </block>
