@@ -1,3 +1,10 @@
-<div id="devtool-logs">
-    <?php echo Mage::helper('devtool')->printr($this->getLogs(), true)?>
+<div id="devtool-logs" class="devtool-tree-view">
+    <ul>
+    <?php foreach ($this->getLogs() as $log): ?>
+        <li>
+            <a href="#"><?php echo sprintf('%s[%s]:',$log->getFile(), $log->getLine())?></a>
+            <?php echo Mage::helper('devtool')->printr($log->getData(), true); ?>
+        </li>
+    <?php endforeach;?>
+    </ul>
 </div>
