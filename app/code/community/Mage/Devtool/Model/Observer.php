@@ -72,6 +72,9 @@ class Mage_Devtool_Model_Observer
      **/ 
     protected function attachToEvents($area)
     {
+        if(!Mage::getSingleton('devtool/session')->getEvents()) {
+            return;
+        }
         foreach (Mage::getSingleton('devtool/session')->getEvents() as $eventName) {
             $event = $this->createEventNode($eventName);
             Mage::getConfig()
