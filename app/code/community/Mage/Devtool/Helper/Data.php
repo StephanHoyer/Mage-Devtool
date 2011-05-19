@@ -131,6 +131,8 @@ class Mage_Devtool_Helper_Data extends Mage_Core_Helper_Abstract
                     $key ? htmlentities($key) : self::NO_CAPTION_LABEL,
                     $this->arrayToHtml($value)
                 );
+            } else if(is_object($value)) {
+                return get_class($value);
             } else {
                 $value = trim($value);
                 $returnHtml .= sprintf(
