@@ -22,3 +22,7 @@
 .jstree-type-text a ins.jstree-icon {
     background-position: 0px -19px !important;
 }
+
+#profiler_section {
+    display: none  !important;
+}

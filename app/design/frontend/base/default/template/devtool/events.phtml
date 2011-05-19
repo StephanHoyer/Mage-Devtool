@@ -6,7 +6,7 @@
                 <li><a href="#tabs-<?php echo $event->getName() ?>-params">Params</a></li>
                 <li><a href="#tabs-<?php echo $event->getName() ?>-attach-xml">Attach XML</a></li>
             </ul>
-            <div id="tabs-<?php echo $event->getName() ?>-params">
+            <div id="tabs-<?php echo $event->getName() ?>-params" class="devtool-tree-view">
                 <?php echo Mage::helper('devtool')->printr($event->getParams(), true) ?>
             </div>
             <div id="tabs-<?php echo $event->getName() ?>-attach-xml">
