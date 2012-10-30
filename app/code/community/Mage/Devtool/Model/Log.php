@@ -40,14 +40,22 @@
  */
 class Mage_Devtool_Model_Log extends Mage_Core_Model_Abstract
 {
+    protected $offset = 0;
+
+    public function setStackOffset($offset)
+    {
+        $this->offset = $offset;
+        return $this;
+    }
+
     public function getFile()
     {
         $stack = $this->getStack();
-        return str_replace(Mage::getBaseDir(),'',$stack[0]['file']);
+        return str_replace(Mage::getBaseDir(),'',$stack[$this->offset]['file']);
     }
     public function getLine()
     {
         $stack = $this->getStack();
-        return $stack[0]['line'];
+        return $stack[$this->offset]['line'];
     }
 }

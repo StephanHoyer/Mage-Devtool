@@ -154,12 +154,13 @@ class Mage_Devtool_Helper_Data extends Mage_Core_Helper_Abstract
         return '<ul>' . $returnHtml . '</ul>';
     }
     
-    public function log($value)
+    public function log($value, $stackOffset=0)
     {
         Mage::getSingleton('devtool/log_collection')->add(
             Mage::getModel('devtool/log')
                 ->setStack(debug_backtrace())
                 ->setValue($value)
+                ->setStackOffset($stackOffset)
         );
     }
 }
