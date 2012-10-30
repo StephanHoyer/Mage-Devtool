@@ -11,10 +11,8 @@ This module adds a toolbar to your Magento frontend based on jQuery UI. It curre
 * Events fired of the current request
 
 ========= ===========================================================================
-Author    Stephan Hoyer <stephan.hoyer@netresearch.de>
-Copyright 2011 Netresearch GmbH & Co.KG <http://www.netresearch.de/>
+Author    Stephan Hoyer <ste.hoyer@gmail.de>
 License   http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
-Link      http://www.netresearch.de/leistungen/magento-ecommerce.html
 ========= ===========================================================================
 
 Requirements
