@@ -128,7 +128,7 @@ class Mage_Devtool_Helper_Data extends Mage_Core_Helper_Abstract
                 $returnHtml .= sprintf(
                     '<li id="%s"><a href="#">%s</a>%s</li>',
                     uniqid('devtool-'),
-                    $key ? htmlentities($key) : self::NO_CAPTION_LABEL,
+                    strlen($key) ? htmlentities($key) : self::NO_CAPTION_LABEL,
                     $this->arrayToHtml($value)
                 );
             } else if(is_object($value)) {
@@ -145,9 +145,9 @@ class Mage_Devtool_Helper_Data extends Mage_Core_Helper_Abstract
                         </ul>
                     </li>',
                     uniqid('devtool-'),
-                    $key ? htmlentities($key) : self::NO_CAPTION_LABEL,
+                    strlen($key) ? htmlentities($key) : self::NO_CAPTION_LABEL,
                     uniqid('devtool-'),
-                    $value ? htmlentities($value) : self::NO_CAPTION_LABEL
+                    strlen($value) ? htmlentities($value) : self::NO_CAPTION_LABEL
                 );
             }
         }
